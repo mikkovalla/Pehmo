@@ -1,7 +1,9 @@
 # Pehmo
+
 Pehmo - Foodsaver app for Digia API Hackatemia 2019
 
 ## API Documentation
+
 - [Swagger JSON](../master/API-documentation/swagger.json)
   API documentation in JSON format
 
@@ -12,5 +14,5 @@ Pehmo - Foodsaver app for Digia API Hackatemia 2019
 
 - [Mikko Vallaskivi](https://github.com/mikkovalla)
 - [Päivi Meros]()
-- [Huong Pham]()
+- [Huong Pham](https://github.com/sallykyki)
 - [Eashin Matubber]()
