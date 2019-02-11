@@ -1,0 +1,648 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Pehmo App API for Digia APIHackatemia 2019",
+    "version" : "1.0.0",
+    "title" : "Pehmo FoodSaver App API",
+    "contact" : {
+      "email" : "info@pehmo.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/Pehmo/Pehmo/1.0.0",
+  "tags" : [ {
+    "name" : "user",
+    "description" : "User operation calls"
+  }, {
+    "name" : "food",
+    "description" : "Food operations - All operations can be performed by logged in user only"
+  }, {
+    "name" : "recipes",
+    "description" : "Recipes operations"
+  }, {
+    "name" : "stores",
+    "description" : "Grocery store operations"
+  }, {
+    "name" : "map",
+    "description" : "Map operations"
+  }, {
+    "name" : "location",
+    "description" : "User location coordinates"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/user/register" : {
+      "post" : {
+        "tags" : [ "user" ],
+        "summary" : "Create user",
+        "description" : "This can only be done by the logged in user.",
+        "operationId" : "createUser",
+        "produces" : [ "application/xml", "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Created user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Error"
+          }
+        }
+      }
+    },
+    "/user/login" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Logs user into the system",
+        "description" : "Use login operation",
+        "operationId" : "loginUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "username",
+          "in" : "query",
+          "description" : "The username for login",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "password",
+          "in" : "query",
+          "description" : "The password for login in plain text",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Invalid username or password"
+          }
+        }
+      }
+    },
+    "/user/logout" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Logs out current logged in user session",
+        "description" : "Current logged in user logout operation",
+        "operationId" : "logoutUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          }
+        }
+      }
+    },
+    "/user/{id}" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Get user by id",
+        "description" : "Return logged in user by id",
+        "operationId" : "getUserById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "user with the id in parameter to be fetched",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "400" : {
+            "description" : "User not found"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "user" ],
+        "summary" : "Update user",
+        "description" : "This can only be done by the logged in user.",
+        "operationId" : "updateUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "user id which is to be updated",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Updated user object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/User"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User details have been succesfully updated"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "user" ],
+        "summary" : "Delete user",
+        "description" : "Only a logged in user can delete themselves.",
+        "operationId" : "deleteUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of the user to be deleted",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User succesfully deleted"
+          },
+          "404" : {
+            "description" : "User not found"
+          }
+        }
+      }
+    },
+    "/user/neighbours" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "List of logged in user's neighbours",
+        "description" : "Lists user's neigbours",
+        "operationId" : "getUserNeighbours",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Neigbours listed"
+          },
+          "400" : {
+            "description" : "No neigbours found!"
+          }
+        }
+      }
+    },
+    "/user/neighbour/{id}" : {
+      "get" : {
+        "tags" : [ "user" ],
+        "summary" : "Get single user's neighbour",
+        "description" : "Get single user neighbour",
+        "operationId" : "getSingleUserNeighbour",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of the neighbour",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Neighbour"
+            }
+          },
+          "400" : {
+            "description" : "Neighbour not found"
+          }
+        }
+      }
+    },
+    "/food/add" : {
+      "post" : {
+        "tags" : [ "food" ],
+        "summary" : "Add new food item",
+        "description" : "Logged in user adds a new food item.",
+        "operationId" : "addFood",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Created food Object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Food"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation"
+          },
+          "400" : {
+            "description" : "Error"
+          }
+        }
+      }
+    },
+    "/food/list" : {
+      "get" : {
+        "tags" : [ "food" ],
+        "summary" : "lists saved foods",
+        "description" : "Returns list of foods saved sorted by expiry date",
+        "operationId" : "listFood",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "list of foods"
+          },
+          "400" : {
+            "description" : "No foods found"
+          }
+        }
+      }
+    },
+    "/food/{id}" : {
+      "get" : {
+        "tags" : [ "food" ],
+        "summary" : "Fetch single food item",
+        "description" : "Returns single food item based on id",
+        "operationId" : "getFoodById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "food to be fetched",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Food"
+            }
+          },
+          "400" : {
+            "description" : "Food not found"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "food" ],
+        "summary" : "Update food item",
+        "description" : "This can only be done by the logged in user.",
+        "operationId" : "updateFoodById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "food id which is to be updated",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "description" : "Updated food Object",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Food"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Food item been succesfully updated"
+          },
+          "400" : {
+            "description" : "Food item not found"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "food" ],
+        "summary" : "Delete food item",
+        "description" : "Only a logged in user can delete a food item.",
+        "operationId" : "deleteSingleFoodById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of the food item to be deleted",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Food item succesfully deleted"
+          },
+          "404" : {
+            "description" : "Food item not found"
+          }
+        }
+      }
+    },
+    "/food/deleteAll" : {
+      "delete" : {
+        "tags" : [ "food" ],
+        "summary" : "Delete all food items",
+        "description" : "Only a logged in user can delete all their food items.",
+        "operationId" : "deleteAllFoodsSavedByUser",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Food items succesfully deleted"
+          },
+          "400" : {
+            "description" : "Food items not found"
+          }
+        }
+      }
+    },
+    "/food/findItemInStoreAPI/{ean}" : {
+      "get" : {
+        "tags" : [ "food" ],
+        "summary" : "Get food item from grocery store API",
+        "description" : "Return food item by EAN code from grocery store API.",
+        "operationId" : "findFoodItemByEan",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "ean",
+          "in" : "path",
+          "description" : "EAN code of food item",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Food item found",
+            "schema" : {
+              "$ref" : "#/definitions/Food"
+            }
+          },
+          "400" : {
+            "description" : "Food item not found"
+          }
+        }
+      }
+    },
+    "/recipes/listForOneFood" : {
+      "get" : {
+        "tags" : [ "recipes" ],
+        "summary" : "List recipes related to single food item",
+        "description" : "List of recipes related to single food item, lists all recipes.",
+        "operationId" : "listRecipesBySingleFoodItem",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Operation successfull"
+          },
+          "400" : {
+            "description" : "Something went wrong"
+          }
+        }
+      }
+    },
+    "/recipes/listForAll" : {
+      "get" : {
+        "tags" : [ "recipes" ],
+        "summary" : "List all recipes related to user food list",
+        "description" : "List of recipes related to user food list.",
+        "operationId" : "listRecipesAllFoodItems",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Operation successfull"
+          },
+          "400" : {
+            "description" : "Something went wrong"
+          }
+        }
+      }
+    },
+    "/recipes/ean/listIngredients" : {
+      "get" : {
+        "tags" : [ "recipes" ],
+        "summary" : "List single recipes ingredients",
+        "description" : "Lists ingredients of a recipe found by EAN code. Return list of food items used in recipe fetched from grocery stores food item API.",
+        "operationId" : "listIngredientsOfRecipe",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "ean",
+          "in" : "query",
+          "description" : "ean code of the wanted recipe",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Operation successfull"
+          },
+          "400" : {
+            "description" : "Something went wrong"
+          }
+        }
+      }
+    },
+    "/map" : {
+      "get" : {
+        "tags" : [ "map" ],
+        "summary" : "return map object mapped to user location",
+        "description" : "By passing Latitude and Longitude, you will get the map object returned with nearest store to user's location\n",
+        "operationId" : "getMap",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "latitude",
+          "in" : "query",
+          "description" : "location latitude",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "longitude",
+          "in" : "query",
+          "description" : "location longitude",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Return map object"
+          },
+          "400" : {
+            "description" : "bad input parameters"
+          }
+        }
+      }
+    },
+    "/location" : {
+      "get" : {
+        "tags" : [ "location" ],
+        "summary" : "return user location longitude and latitude",
+        "description" : "Returns approximative users location in terms of longitude and latitude to be used as parameters in map operation.\n",
+        "operationId" : "getLocation",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "User located",
+            "schema" : {
+              "$ref" : "#/definitions/Location"
+            }
+          },
+          "400" : {
+            "description" : "Couldn't find user location"
+          }
+        }
+      }
+    },
+    "/stores" : {
+      "get" : {
+        "tags" : [ "stores" ],
+        "summary" : "return stores near user",
+        "description" : "Returns list of stores near users given approximative location.\n",
+        "operationId" : "listStores",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "latitude",
+          "in" : "query",
+          "description" : "location latitude",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "longitude",
+          "in" : "query",
+          "description" : "location longitude",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "List of stores fetched succesfully",
+            "schema" : {
+              "$ref" : "#/definitions/Store"
+            }
+          },
+          "400" : {
+            "description" : "Couldn't find any stores near user"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "username" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "phone" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Neighbour" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "username" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Food" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "ean" : {
+          "type" : "number"
+        },
+        "imageUrl" : {
+          "type" : "string"
+        },
+        "expiryDate" : {
+          "type" : "string"
+        },
+        "purchased" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Location" : {
+      "type" : "object",
+      "properties" : {
+        "longitude" : {
+          "type" : "string"
+        },
+        "latitude" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Store" : {
+      "type" : "object",
+      "properties" : {
+        "longitude" : {
+          "type" : "string"
+        },
+        "latitude" : {
+          "type" : "string"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "adress" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "postalcode" : {
+          "type" : "string"
+        },
+        "phone_number" : {
+          "type" : "number"
+        }
+      }
+    }
+  }
+}
