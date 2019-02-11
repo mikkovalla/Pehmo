@@ -15,4 +15,4 @@ Pehmo - Foodsaver app for Digia API Hackatemia 2019
 - [Mikko Vallaskivi](https://github.com/mikkovalla)
 - [Päivi Meros]()
 - [Huong Pham](https://github.com/sallykyki)
-- [Eashin Matubber]()
+- [Eashin Matubber](https://github.com/eeashin)
