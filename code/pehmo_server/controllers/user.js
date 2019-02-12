@@ -12,3 +12,13 @@ userRouter.get('/login', async (request, response) => {
   }
   response.json(user)
 })
+
+userRouter.get('/location', async (request, response) => {
+  const userIp = request.connection.remoteAddress
+  console.log(userIp)
+  response.status(200).json({
+    message: "all good here!"
+  })
+})
+
+module.exports = userRouter
