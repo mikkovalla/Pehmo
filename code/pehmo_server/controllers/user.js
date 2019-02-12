@@ -2,7 +2,7 @@ const userRouter = require('express').Router()
 
 userRouter.get('/login', async (request, response) => {
   const user = {
-    id: 1007,
+    id: 1,
     username: "PalomiesSami",
     firstName: "Sami",
     lastName: "Palomies",
@@ -10,14 +10,20 @@ userRouter.get('/login', async (request, response) => {
     password: "SaminTosiKovaPassu",
     phone: 609110382
   }
-  response.json(user)
+  response.status(200).json({
+    message: `Welcome ${user.firstName + user.lastName}`,
+    id: user.id,
+    username: user.username
+  })
 })
 
 userRouter.get('/location', async (request, response) => {
-  const userIp = request.connection.remoteAddress
-  console.log(userIp)
+  const lat = 60.223372
+  const lon = 24.865467
   response.status(200).json({
-    message: "all good here!"
+    message: "User located!",
+    latitude: lat,
+    longitude: lon
   })
 })
 
