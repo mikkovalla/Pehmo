@@ -45,4 +45,18 @@ userRouter.get('/:id/neighbours', async (request, response) => {
   }
 })
 
+userRouter.get('/:id/neighbours/:id2', async (request, response) => {
+  try {
+    console.log(request.params.id + " - " + request.params.id2)
+    const res = await axios.get(url + request.params.id)
+    const neighbourList = res.data.neighbours
+    const naapuri = await axios.get(url + '?id=' + request.params.id2)
+    response.status(200).json({
+      neighbour: naapuri.data[0].username
+    })
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 module.exports = userRouter
