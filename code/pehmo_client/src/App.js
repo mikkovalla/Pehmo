@@ -1,16 +1,14 @@
-import React, {
-  Component
-} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import LoginBox from "./components/LoginBox";
+import FoodList from "./components/FoodList";
 
 class App extends Component {
   render() {
-    return ( <
-      div >
-      <
-      h1 > Hello Pehmo!!! < /h1> <
-      /div>
+    return (
+      <div className="App">
+        <LoginBox />
+      </div>
     );
   }
 }
