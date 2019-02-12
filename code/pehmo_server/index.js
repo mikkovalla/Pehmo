@@ -6,10 +6,12 @@ const cors = require('cors')
 const port = 3002
 
 const userRouter = require('./controllers/user')
+const foodRouter = require('./controllers/food')
 
 app.use(cors())
 app.use(bodyParser.json())
 app.use('/api/user', userRouter)
+app.use('/api/food', foodRouter)
 
 const server = http.createServer(app)
 
