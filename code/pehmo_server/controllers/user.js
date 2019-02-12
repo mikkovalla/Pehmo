@@ -1,4 +1,7 @@
 const userRouter = require('express').Router()
+const axios = require('axios')
+
+const url = 'http://localhost:3004/users/'
 
 userRouter.get('/login', async (request, response) => {
   const user = {
@@ -11,7 +14,7 @@ userRouter.get('/login', async (request, response) => {
     phone: 609110382
   }
   response.status(200).json({
-    message: `Welcome ${user.firstName + user.lastName}`,
+    message: `Welcome ${user.username}`,
     id: user.id,
     username: user.username
   })
@@ -25,6 +28,21 @@ userRouter.get('/location', async (request, response) => {
     latitude: lat,
     longitude: lon
   })
+})
+
+userRouter.get('/:id/neighbours', async (request, response) => {
+  try {
+    const res = await axios.get(url + request.params.id)
+    const neighbourList = res.data.neighbours
+    const naapurit = await axios.get(url + '?id=' + neighbourList[0] + '&id=' + neighbourList[1])
+    const people = naapurit.data.map(i => i.username)
+
+    response.status(200).json({
+      neighbours: people
+    })
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 module.exports = userRouter

@@ -6,7 +6,8 @@
       "lastName": "Palomies",
       "email": "sami@pontypantynpalokunta.com",
       "password": "SaminTosiKovaPassu",
-      "phone": 609110382
+      "phone": 609110382,
+      "neighbours": [2, 3]
     },
     {
       "id": 2,
@@ -15,7 +16,8 @@
       "lastName": "Teraste",
       "email": "tomi@pontypantynpalokunta.com",
       "password": "tominTosiKovaPassu",
-      "phone": 609110382
+      "phone": 609110382,
+      "neighbours": [1, 3]
     },
     {
       "id": 3,
@@ -24,7 +26,8 @@
       "lastName": "Kirvonen",
       "email": "elvis@pontypantynpalokunta.com",
       "password": "elviskenTosiKovaPassu",
-      "phone": 609110382
+      "phone": 609110382,
+      "neighbours": [1, 2]
     },
     {
       "id": 4,
@@ -33,33 +36,8 @@
       "lastName": "Hintsa",
       "email": "norman@pontypantynpalokunta.com",
       "password": "normanninTosiKovaPassu",
-      "phone": 609110382
-    }
-  ],
-  "neighbours": [{
-      "id": 1,
-      "userId": 1,
-      "neighbours": [
-        2,
-        3
-      ]
-    },
-    {
-      "id": 2,
-      "userId": 1002,
-      "neighbours": [
-        1,
-        3
-      ]
-    },
-    {
-      "id": 3,
-      "userId": 1003,
-      "neighbours": [
-        1,
-        2,
-        4
-      ]
+      "phone": 609110382,
+      "neighbours": [3]
     }
   ],
   "foods": [{
