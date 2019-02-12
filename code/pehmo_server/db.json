@@ -1,0 +1,128 @@
+{
+  "users": [{
+      "id": 1,
+      "username": "PalomiesSami",
+      "firstName": "Sami",
+      "lastName": "Palomies",
+      "email": "sami@pontypantynpalokunta.com",
+      "password": "SaminTosiKovaPassu",
+      "phone": 609110382
+    },
+    {
+      "id": 2,
+      "username": "PalomestariTeraste",
+      "firstName": "Tomi",
+      "lastName": "Teraste",
+      "email": "tomi@pontypantynpalokunta.com",
+      "password": "tominTosiKovaPassu",
+      "phone": 609110382
+    },
+    {
+      "id": 3,
+      "username": "PalomiesElvis",
+      "firstName": "Elvis",
+      "lastName": "Kirvonen",
+      "email": "elvis@pontypantynpalokunta.com",
+      "password": "elviskenTosiKovaPassu",
+      "phone": 609110382
+    },
+    {
+      "id": 4,
+      "username": "NormanHintsa",
+      "firstName": "Norman",
+      "lastName": "Hintsa",
+      "email": "norman@pontypantynpalokunta.com",
+      "password": "normanninTosiKovaPassu",
+      "phone": 609110382
+    }
+  ],
+  "neighbours": [{
+      "id": 1,
+      "userId": 1,
+      "neighbours": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 2,
+      "userId": 1002,
+      "neighbours": [
+        1,
+        3
+      ]
+    },
+    {
+      "id": 3,
+      "userId": 1003,
+      "neighbours": [
+        1,
+        2,
+        4
+      ]
+    }
+  ],
+  "foods": [{
+      "id": 1,
+      "name": "Kotimaista 1l rasvaton maito",
+      "ean": "6415712506032",
+      "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6415712506032_0.png",
+      "expiryDate": "13-02-2019",
+      "purchased": "11-02-2019",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Valio voi 500 g normaalisuolainen",
+      "ean": "6408430030002",
+      "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6408430030002_0.png",
+      "expiryDate": "29-05-2019",
+      "purchased": "01-02-2019",
+      "userId": 1
+    },
+    {
+      "id": 3,
+      "name": "Meira Ruokasuola 1kg jodioitu",
+      "ean": "6414201631033",
+      "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6414201631033_0.png",
+      "expiryDate": "22-11-2021",
+      "purchased": "06-04-2018",
+      "userId": 1
+    },
+    {
+      "id": 4,
+      "name": "Kotimaista Kevytmaitojuoma laktoositon 1L",
+      "ean": "6414893385672",
+      "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6414893385672_0.png",
+      "expiryDate": "12-02-2019",
+      "purchased": "08-02-2019",
+      "userId": 1
+    },
+    {
+      "id": 5,
+      "name": "Kotimaista 2kg suomalainen yleisperuna",
+      "ean": "6414894501217",
+      "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6414894501217_0.png",
+      "expiryDate": "12-04-2019",
+      "purchased": "08-02-2019"
+    },
+    {
+      "id": 6,
+      "name": "Nutella 350g hasselpähkinä-kaakaolevite",
+      "ean": "80177173",
+      "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/80177173_0.png",
+      "expiryDate": "12-08-2019",
+      "purchased": "08-02-2019",
+      "userId": 1
+    },
+    {
+      "id": 7,
+      "name": "Kotimaista 2kg Puolikarkea vehnäjauho",
+      "ean": "6415712000172",
+      "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6415712000172_0.png",
+      "expiryDate": "12-08-2019",
+      "purchased": "08-02-2019",
+      "userId": 1
+    }
+  ]
+}
