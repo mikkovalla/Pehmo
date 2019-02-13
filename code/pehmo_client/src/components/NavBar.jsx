@@ -32,6 +32,11 @@ class NavBar extends Component {
                 Settings
               </Link>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="http://localhost:3000/neighbours">
+                Neighbours
+              </a>
+            </li>
           </ul>
         </nav>
       </div>
