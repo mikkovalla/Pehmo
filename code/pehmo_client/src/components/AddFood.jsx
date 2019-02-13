@@ -5,9 +5,26 @@ import NavBar from "./NavBar";
 class AddFood extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      name: 'Kurkku',
+      ean: '3294780347896986',
+      expiryDate: '2019-02-14',
+      purchaseDate: '2019-02-13'
+    };
   }
-  addFood(e) {}
+  addFood(e) {
+    e.preventDefault()
+    fetch('http://localhost:3002/api/food/user/1/food/add', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: {
+        "name": this.state.name,
+        'ean': this.state.ean,
+        'expiryDate': this.state.expiryDate,
+        'purchaseDate': this.state.purchaseDate
+      }
+    })
+  }
 
   render() {
     return (
@@ -19,12 +36,12 @@ class AddFood extends Component {
                 <h5 className="card-title text-center">Add your food</h5>
                 <form className="form-signin">
                   <div className="form-label-group">
-                    <label htmlFor="inputEmail">Food item</label>
+                    <label htmlFor="inputEmail">Food name</label>
                     <input
                       type="text"
+                      name="name"
                       id="inputFood"
                       className="form-control"
-                      placeholder="Food item"
                       required
                       autoFocus
                     />
@@ -32,30 +49,30 @@ class AddFood extends Component {
                   <div className="form-label-group">
                     <label htmlFor="inputean">Product code</label>
                     <input
-                      type="date"
+                      type="text"
                       id="inputean"
+                      name="ean"
                       className="form-control"
-                      placeholder="ean"
                       required
                     />
                   </div>
                   <div className="form-label-group">
                     <label htmlFor="inputExpDate">Expiry Date</label>
                     <input
-                      type="date"
+                      type="text"
                       id="inputExpDate"
+                      name="expiryDate"
                       className="form-control"
-                      placeholder="Password"
                       required
                     />
                   </div>
                   <div className="form-label-group">
                     <label htmlFor="inputPurchaseDate">Purchase Date</label>
                     <input
-                      type="date"
-                      id="inputean"
+                      type="text"
+                      id="purchaseDate"
+                      name="purchaseDate"
                       className="form-control"
-                      placeholder="Purchase Date"
                       required
                     />
                   </div>
