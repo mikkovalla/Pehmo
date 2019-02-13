@@ -7,9 +7,9 @@ class NavBar extends Component {
       <div>
         <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
           <ul className="navbar-nav">
-            <li className="nav-item active">
+            <li className="nav-item">
               <Link to="/foodlist" className="nav-link">
-                Food <span className="sr-only">(current)</span>
+                Food
               </Link>
             </li>
             <li className="nav-item">
@@ -18,9 +18,9 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <Link to="/addfood" className="nav-link">
                 Add
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="">
@@ -28,9 +28,9 @@ class NavBar extends Component {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="">
+              <Link to="/" className="nav-link">
                 Settings
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="http://localhost:3000/neighbours">
