@@ -42,14 +42,11 @@ foodRouter.get('/user/:id/food/list', async (request, response) => {
     const foods = await axios.get(url + '?userId=' + request.params.id)
     const listed = foods.data
 
-    listed.sort(function(a, b){
+    listed.sort(function (a, b) {
       let dateA = new Date(a.expiryDate)
-      console.log("date a",dateA)
       let dateB = new Date(b.expiryDate)
       return dateA - dateB
     })
-
-    console.log(listed)
 
     if (listed) {
       response.status(200).json({
@@ -71,7 +68,6 @@ foodRouter.get('/user/:id/food/:id2', async (request, response) => {
   try {
     const foods = await axios.get(url + '?userId=' + request.params.id + '&id=' + request.params.id2)
     const listed = foods.data[0]
-    console.log(listed)
 
     if (listed) {
       response.status(200).json({
@@ -86,6 +82,16 @@ foodRouter.get('/user/:id/food/:id2', async (request, response) => {
   } catch (error) {
     console.log(error)
   }
+})
+
+foodRouter.delete('/user/:id/food/:id2', (request, response) => {
+    axios.delete(url + '?id=' + request.params.id2 + '&userId=' + request.params.id).then(
+      resp => {
+        console.log(resp.data)
+      }
+    ).catch(error => {
+      console.log(error)
+    })
 })
 
 module.exports = foodRouter
