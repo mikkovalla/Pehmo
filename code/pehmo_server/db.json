@@ -132,6 +132,15 @@
       "purchased": "01-02-2019",
       "userId": "2",
       "id": 10
+    },
+    {
+      "name": "Valio voi 100 g normaalisuolainen",
+      "ean": "6408430030002",
+      "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6408430030002_0.png",
+      "expiryDate": "29-05-2019",
+      "purchased": "01-02-2019",
+      "userId": "4",
+      "id": 11
     }
   ]
 }
