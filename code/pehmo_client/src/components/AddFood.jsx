@@ -30,12 +30,32 @@ class AddFood extends Component {
                     />
                   </div>
                   <div className="form-label-group">
+                    <label htmlFor="inputean">Product code</label>
+                    <input
+                      type="date"
+                      id="inputean"
+                      className="form-control"
+                      placeholder="ean"
+                      required
+                    />
+                  </div>
+                  <div className="form-label-group">
                     <label htmlFor="inputExpDate">Expiry Date</label>
                     <input
                       type="date"
                       id="inputExpDate"
                       className="form-control"
                       placeholder="Password"
+                      required
+                    />
+                  </div>
+                  <div className="form-label-group">
+                    <label htmlFor="inputPurchaseDate">Purchase Date</label>
+                    <input
+                      type="date"
+                      id="inputean"
+                      className="form-control"
+                      placeholder="Purchase Date"
                       required
                     />
                   </div>
