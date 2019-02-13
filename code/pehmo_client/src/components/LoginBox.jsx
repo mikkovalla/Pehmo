@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class LoginBox extends Component {
   constructor(props) {
@@ -41,12 +42,14 @@ class LoginBox extends Component {
                   <div>
                     <p>Don't have an account? Sign up</p>
                   </div>
-                  <button
-                    className="btn btn-lg btn-primary btn-block text-uppercase"
-                    onClick={this.submitLogin.bind(this)}
-                  >
-                    Sign in
-                  </button>
+                  <Link to="/foodlist">
+                    <button
+                      className="btn btn-lg btn-primary btn-block text-uppercase"
+                      onClick={this.submitLogin.bind(this)}
+                    >
+                      Sign in
+                    </button>
+                  </Link>
                 </form>
               </div>
             </div>
