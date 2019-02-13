@@ -58,7 +58,7 @@
       "name": "Kotimaista 1l rasvaton maito",
       "ean": "6415712506032",
       "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6415712506032_0.png",
-      "expiryDate": "13-02-2019",
+      "expiryDate": "2019-02-13",
       "purchased": "11-02-2019",
       "userId": 1
     },
@@ -67,7 +67,7 @@
       "name": "Valio voi 500 g normaalisuolainen",
       "ean": "6408430030002",
       "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6408430030002_0.png",
-      "expiryDate": "29-05-2019",
+      "expiryDate": "2019-05-29",
       "purchased": "01-02-2019",
       "userId": 1
     },
@@ -76,7 +76,7 @@
       "name": "Meira Ruokasuola 1kg jodioitu",
       "ean": "6414201631033",
       "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6414201631033_0.png",
-      "expiryDate": "22-11-2021",
+      "expiryDate": "2021-11-22",
       "purchased": "06-04-2018",
       "userId": 1
     },
@@ -85,7 +85,7 @@
       "name": "Kotimaista Kevytmaitojuoma laktoositon 1L",
       "ean": "6414893385672",
       "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6414893385672_0.png",
-      "expiryDate": "12-02-2019",
+      "expiryDate": "2019-02-12",
       "purchased": "08-02-2019",
       "userId": 1
     },
@@ -94,7 +94,7 @@
       "name": "Kotimaista 2kg suomalainen yleisperuna",
       "ean": "6414894501217",
       "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6414894501217_0.png",
-      "expiryDate": "12-04-2019",
+      "expiryDate": "2019-04-12",
       "purchased": "08-02-2019"
     },
     {
@@ -102,7 +102,7 @@
       "name": "Nutella 350g hasselpähkinä-kaakaolevite",
       "ean": "80177173",
       "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/80177173_0.png",
-      "expiryDate": "12-08-2019",
+      "expiryDate": "2019-08-12",
       "purchased": "08-02-2019",
       "userId": 1
     },
@@ -111,20 +111,15 @@
       "name": "Kotimaista 2kg Puolikarkea vehnäjauho",
       "ean": "6415712000172",
       "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6415712000172_0.png",
-      "expiryDate": "12-08-2019",
+      "expiryDate": "2019-08-12",
       "purchased": "08-02-2019",
       "userId": 1
-    },
-    {
-      "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/undefined_0.png",
-      "userId": "1",
-      "id": 8
     },
     {
       "name": "Valio voi 500 g normaalisuolainen",
       "ean": "6408430030002",
       "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6408430030002_0.png",
-      "expiryDate": "29-05-2019",
+      "expiryDate": "2019-29-05",
       "purchased": "01-02-2019",
       "userId": "1",
       "id": 9
@@ -133,7 +128,7 @@
       "name": "Valio voi 10000 g normaalisuolainen",
       "ean": "6408430030002",
       "imageUrl": "https://foodieimages.s3.amazonaws.com/images/entries/180x220/6408430030002_0.png",
-      "expiryDate": "29-05-2019",
+      "expiryDate": "2019-05-29",
       "purchased": "01-02-2019",
       "userId": "2",
       "id": 10

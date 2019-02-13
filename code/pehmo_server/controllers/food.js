@@ -6,7 +6,7 @@ const url = 'http://localhost:3004/foods/'
 foodRouter.post('/user/:id/food/add', async (request, response) => {
   const body = request.body
 
-  if(body.name || body.ean || body.expiryDate || body.purchased){
+  if (body.name || body.ean || body.expiryDate || body.purchased) {
     return response.status(400).json({
       message: `You forgot to fill in all the details!`
     })
@@ -41,6 +41,14 @@ foodRouter.get('/user/:id/food/list', async (request, response) => {
   try {
     const foods = await axios.get(url + '?userId=' + request.params.id)
     const listed = foods.data
+
+    listed.sort(function(a, b){
+      let dateA = new Date(a.expiryDate)
+      console.log("date a",dateA)
+      let dateB = new Date(b.expiryDate)
+      return dateA - dateB
+    })
+
     console.log(listed)
 
     if (listed) {
