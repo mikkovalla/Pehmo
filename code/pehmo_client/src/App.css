@@ -10,9 +10,24 @@
 .btn-primary:hover {
   background-color: #39891f;
 }
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  background-color: gray;
+  border: none;
+}
 .card-title {
   color: #39891f;
 }
 td .secltion-box {
   text-align: "center";
+}
+.perfectly-match {
+  color: #39891f;
+}
+.missing {
+  color: #f15c2c;
+}
+.not-recommend {
+  color: #ff0000;
 }

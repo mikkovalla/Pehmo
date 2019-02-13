@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import NavBar from "./NavBar";
+import { Link } from "react-router-dom";
 
 class FoodList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: []
+      items: [],
+      selectedItems: []
     };
   }
 
@@ -19,6 +21,22 @@ class FoodList extends Component {
         this.setState({ items });
       });
   }
+
+  onCheckboxClick = item => () => {
+    const { selectedItems } = this.state;
+    if (selectedItems.indexOf(item.id) !== -1) {
+      this.setState({
+        selectedItems: selectedItems.filter(i => i !== item.id)
+      });
+      return;
+    }
+
+    this.setState({ selectedItems: [...selectedItems, item.id] });
+  };
+
+  isBtnDisabled = () => {
+    return this.state.selectedItems.length < 1;
+  };
 
   render() {
     return (
@@ -39,7 +57,10 @@ class FoodList extends Component {
                   <tbody key={id}>
                     <tr>
                       <td>
-                        <input type="checkbox" />
+                        <input
+                          type="checkbox"
+                          onClick={this.onCheckboxClick(item)}
+                        />
                       </td>
                       <td>{item.name}</td>
                       <td>{item.expiryDate}</td>
@@ -47,6 +68,24 @@ class FoodList extends Component {
                   </tbody>
                 ))}
               </table>
+              <div>
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  disabled={this.isBtnDisabled()}
+                >
+                  Share
+                </button>
+                <Link to="/recipes">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    disabled={this.isBtnDisabled()}
+                  >
+                    Generate Recipe
+                  </button>
+                </Link>
+              </div>
               <NavBar />
               <div />
             </div>
