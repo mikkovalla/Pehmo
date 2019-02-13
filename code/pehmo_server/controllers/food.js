@@ -5,6 +5,12 @@ const url = 'http://localhost:3004/foods/'
 
 foodRouter.post('/user/:id/food/add', async (request, response) => {
   const body = request.body
+
+  if(body.name || body.ean || body.expiryDate || body.purchased){
+    return response.status(400).json({
+      message: `You forgot to fill in all the details!`
+    })
+  }
   try {
     const foodToadd = await axios({
       method: 'post',
@@ -37,7 +43,7 @@ foodRouter.get('/user/:id/food/list', async (request, response) => {
     const listed = foods.data
     console.log(listed)
 
-    if (listed.length > 0) {
+    if (listed) {
       response.status(200).json({
         message: `Food items fetched succesfully`,
         listed
@@ -53,6 +59,25 @@ foodRouter.get('/user/:id/food/list', async (request, response) => {
   }
 })
 
+foodRouter.get('/user/:id/food/:id2', async (request, response) => {
+  try {
+    const foods = await axios.get(url + '?userId=' + request.params.id + '&id=' + request.params.id2)
+    const listed = foods.data[0]
+    console.log(listed)
 
+    if (listed) {
+      response.status(200).json({
+        message: `Food item fetched succesfully`,
+        listed
+      })
+    } else {
+      response.status(200).json({
+        message: "You haven't added any food items yet"
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 module.exports = foodRouter
