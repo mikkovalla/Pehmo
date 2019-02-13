@@ -20,6 +20,17 @@ userRouter.get('/login', async (request, response) => {
   })
 })
 
+userRouter.get('/:id', async (request, response) => {
+  try {
+    const res = await axios.get(url + request.params.id)
+    response.status(200).json({
+      user: res.data
+    })
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 userRouter.get('/location', async (request, response) => {
   const lat = 60.223372
   const lon = 24.865467

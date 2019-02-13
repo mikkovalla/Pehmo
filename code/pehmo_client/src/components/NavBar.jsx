@@ -23,7 +23,7 @@ class NavBar extends Component {
               </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="">
+              <a className="nav-link" href="http://localhost:3000/profile">
                 Profile
               </a>
             </li>

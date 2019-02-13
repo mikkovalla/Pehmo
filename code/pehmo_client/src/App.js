@@ -6,6 +6,7 @@ import Recipes from "./components/Recipes";
 import AddFood from "./components/AddFood";
 import Neighbours from "./components/Neighbours";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Profile from "./components/Profile";
 
 class App extends Component {
   render() {
@@ -18,6 +19,11 @@ class App extends Component {
             <Route exact path="/recipes" component={Recipes} />
             <Route exact path="/addfood" component={AddFood} />
             <Route exact path="/neighbours" component={Neighbours} />
+            < Route exact path = "/profile"
+            component = {
+              Profile
+            }
+            />
           </Switch>
         </BrowserRouter>
       </div>
