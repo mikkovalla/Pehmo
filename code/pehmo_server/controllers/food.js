@@ -3,7 +3,7 @@ const axios = require('axios')
 
 const url = 'http://localhost:3004/foods/'
 
-foodRouter.get('/:id/food/add', async (request, response) => {
+foodRouter.post('/user/:id/food/add', async (request, response) => {
   const body = request.body
   try {
     const foodToadd = await axios({
@@ -24,12 +24,35 @@ foodRouter.get('/:id/food/add', async (request, response) => {
       }
     })
     response.status(200).json({
-      message: `Food item ${body.name} added succesfully`,
+      message: `Food item ${body.name} added succesfully`
     })
   } catch (error) {
     console.log(error)
   }
 })
+
+foodRouter.get('/user/:id/food/list', async (request, response) => {
+  try {
+    const foods = await axios.get(url + '?userId=' + request.params.id)
+    const listed = foods.data
+    console.log(listed)
+
+    if (listed.length > 0) {
+      response.status(200).json({
+        message: `Food items fetched succesfully`,
+        listed
+      })
+    } else {
+      response.status(200).json({
+        message: "You haven't added any food items yet"
+      })
+    }
+
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 
 
 module.exports = foodRouter
