@@ -48,9 +48,19 @@ foodRouter.get('/user/:id/food/list', async (request, response) => {
       return dateA - dateB
     })
 
+    const day = new Date()
+    const today = day.toISOString().slice(0, 10)
+    //console.log(today)
+
     if (listed) {
+      const expToday = listed.filter(i => i.expiryDate === today)
+      const expBefore = listed.filter(i => i.expiryDate < today)
       response.status(200).json({
         message: `Food items fetched succesfully`,
+        messageExpy: 'The following food items expire today',
+        expToday,
+        messageExpy2: 'The following food items have expired',
+        expBefore,
         listed
       })
     } else {
@@ -138,5 +148,6 @@ foodRouter.put('/user/:id/food/:id2', async (request, response) => {
     console.log(error)
   }
 })
+
 
 module.exports = foodRouter
