@@ -5,3 +5,14 @@
   position: relative;
   margin-bottom: 1rem;
 }
+
+.btn-primary,
+.btn-primary:hover {
+  background-color: #39891f;
+}
+.card-title {
+  color: #39891f;
+}
+td .secltion-box {
+  text-align: "center";
+}
