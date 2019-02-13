@@ -33,7 +33,6 @@ class Neighbours extends Component {
                 <tbody>
                   <tr>
                     <th>Neighbours</th>
-                    <th>Name</th>
                   </tr>
                 </tbody>
                 {this.state.neighbours.map((item) => (
