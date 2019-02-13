@@ -149,10 +149,5 @@ foodRouter.put('/user/:id/food/:id2', async (request, response) => {
   }
 })
 
-foodRouter.get('/user/:id/food/expirytoday', async (request, response) => {
-  const day = new Date()
-  const today = day.toISOString().slice(0, 10)
-  console.log(today)
-})
 
 module.exports = foodRouter
